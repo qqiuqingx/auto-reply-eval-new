@@ -275,6 +275,15 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def safe_path_label(path: Path) -> str:
+    """避免在报告和日志中暴露本机用户目录等绝对路径。"""
+    resolved = path.resolve()
+    try:
+        return str(resolved.relative_to(PROJECT_ROOT))
+    except ValueError:
+        return path.name
+
+
 def build_summary(results: list[dict[str, Any]]) -> dict[str, Any]:
     if not results:
         raise InputError("自动回复数据不能为空")
@@ -428,9 +437,9 @@ def evaluate_dataset(
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "mode": judge.mode,
             "disclaimer": "mock 结果是模拟评审返回，仅用于验证流水线。",
-            "input": str(replies_path.resolve()),
+            "input": safe_path_label(replies_path),
             "input_sha256": sha256(replies_path),
-            "human_reference": str(human_ref_path.resolve()),
+            "human_reference": safe_path_label(human_ref_path),
             "human_reference_sha256": sha256(human_ref_path),
         },
         "metric_definitions": METRIC_DEFINITIONS,
@@ -471,7 +480,7 @@ def main() -> int:
         f"完成 {summary['case_count']} 条 mock 评估；整体 {summary['overall_mean']}/100；"
         f"最差 3 条：{', '.join(summary['worst_case_ids'])}"
     )
-    print(f"报告：{(args.output_dir / 'evaluation_report.md').resolve()}")
+    print(f"报告：{safe_path_label(args.output_dir / 'evaluation_report.md')}")
     return 0
 
 

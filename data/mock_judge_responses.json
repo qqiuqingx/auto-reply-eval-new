@@ -1,0 +1,235 @@
+{
+  "case_01": {
+    "metrics": {
+      "reference_consistency": {"score": 3, "reason": "处理方向与人工参考基本一致，但没有采用主动重派方案。"},
+      "intent_completion": {"score": 2, "reason": "回应了错柜问题，但没有直接解决用户取不出来的核心困难。"},
+      "actionability": {"score": 1, "reason": "主要让用户自行联系、确认或前往快递柜，客服协助只是最后兜底。"},
+      "tone": {"score": 3, "reason": "表达礼貌，但对用户当前不便的承接较弱。"}
+    },
+    "missing_points": ["主动联系快递公司重新派送", "索取订单号以继续处理"],
+    "risk_flags": [],
+    "summary": "回复提供了方向，但将主要处理责任留给用户。"
+  },
+  "case_02": {
+    "metrics": {
+      "reference_consistency": {"score": 4, "reason": "携带限制与人工参考一致，没有核心冲突。"},
+      "intent_completion": {"score": 3, "reason": "说明了通用规则，但没有核对用户所指商品的实际容量。"},
+      "actionability": {"score": 2, "reason": "提供了检查路径，但仍由用户自行确认商品参数。"},
+      "tone": {"score": 3, "reason": "礼貌、清晰，场景不要求额外情绪安抚。"}
+    },
+    "missing_points": ["核对具体商品容量并给出明确结论"],
+    "risk_flags": [],
+    "summary": "通用规定有价值，但没有完成针对具体商品的判断。"
+  },
+  "case_03": {
+    "metrics": {
+      "reference_consistency": {"score": 4, "reason": "共同提及的原路退款时效与人工参考一致。"},
+      "intent_completion": {"score": 2, "reason": "只回答一般退款时效，没有查询用户自己的退款进度。"},
+      "actionability": {"score": 2, "reason": "给出自助查询和联系客服路径，但没有索取订单号主动查询。"},
+      "tone": {"score": 3, "reason": "表达中性礼貌。"}
+    },
+    "missing_points": ["索取订单号", "查询实际退款状态"],
+    "risk_flags": [
+      {"code": "UNVERIFIED_TIME_RANGE", "severity": "medium", "claim": "银行卡3-7个工作日、信用卡5-15个工作日", "reason": "这些时效未在当前人工参考中得到支持，只能标记为待核验。"}
+    ],
+    "summary": "通用信息基本一致，但没有解决具体退款查询。"
+  },
+  "case_04": {
+    "metrics": {
+      "reference_consistency": {"score": 4, "reason": "质保期和退换方案与人工参考一致。"},
+      "intent_completion": {"score": 3, "reason": "给出排查和售后方案，但没有直接推进三天内的售后处理。"},
+      "actionability": {"score": 2, "reason": "步骤清楚，但主要由用户自行排查和申请。"},
+      "tone": {"score": 4, "reason": "对故障造成的不便进行了恰当道歉。"}
+    },
+    "missing_points": ["直接承接退货退款或换新", "确认用户希望采用哪种方案"],
+    "risk_flags": [],
+    "summary": "整体可用，但排查步骤增加了用户负担。"
+  },
+  "case_05": {
+    "metrics": {
+      "reference_consistency": {"score": 3, "reason": "道歉并继续处理与人工参考一致，但增加了内部培训承诺。"},
+      "intent_completion": {"score": 3, "reason": "能够询问原始问题并表示立即处理，内部事项略显冗余。"},
+      "actionability": {"score": 3, "reason": "主动询问问题并承诺接续处理。"},
+      "tone": {"score": 4, "reason": "对等待和负面体验进行了充分道歉。"}
+    },
+    "missing_points": ["删去与当前解决无关的内部培训表述"],
+    "risk_flags": [
+      {"code": "UNVERIFIED_ORG_COMMITMENT", "severity": "low", "claim": "会加强客服团队的培训", "reason": "这是无法由当前文本证明会执行的组织承诺。"}
+    ],
+    "summary": "情绪承接和继续服务较好，但包含无助于当前问题的承诺。"
+  },
+  "case_06": {
+    "metrics": {
+      "reference_consistency": {"score": 4, "reason": "可能原因与人工参考没有冲突。"},
+      "intent_completion": {"score": 2, "reason": "只罗列通用原因，没有判断这张优惠券为何不能使用。"},
+      "actionability": {"score": 1, "reason": "让用户自行检查并再次联系客服，没有索取券号或订单号。"},
+      "tone": {"score": 3, "reason": "表达礼貌，但较模板化。"}
+    },
+    "missing_points": ["索取优惠券编号或订单号", "定位实际失败原因"],
+    "risk_flags": [],
+    "summary": "通用排查清单不能替代针对当前优惠券的定位。"
+  },
+  "case_07": {
+    "metrics": {
+      "reference_consistency": {"score": 3, "reason": "安全措施与人工参考方向一致，但没有提供直接查询登录记录的路径。"},
+      "intent_completion": {"score": 3, "reason": "提供了必要止损建议，但没有回答短信是否真实。"},
+      "actionability": {"score": 2, "reason": "操作步骤明确，但验证工作主要由用户完成。"},
+      "tone": {"score": 3, "reason": "礼貌清晰，但对用户可能的焦虑安抚不足。"}
+    },
+    "missing_points": ["索取账号并查询登录记录", "先安抚用户再引导止损"],
+    "risk_flags": [],
+    "summary": "安全提醒较好，但未完成真伪核验。"
+  },
+  "case_08": {
+    "metrics": {
+      "reference_consistency": {"score": 4, "reason": "TPU软胶材质及特点与人工参考一致。"},
+      "intent_completion": {"score": 4, "reason": "已经直接回答用户询问的具体材质。"},
+      "actionability": {"score": 3, "reason": "核心问题无需额外操作，补充查询路径可作为兜底。"},
+      "tone": {"score": 3, "reason": "礼貌、简洁，符合普通咨询场景。"}
+    },
+    "missing_points": [],
+    "risk_flags": [],
+    "summary": "自动回复已直接、准确地回答材质问题。"
+  },
+  "case_09": {
+    "metrics": {
+      "reference_consistency": {"score": 4, "reason": "质量问题和非质量问题的运费规则与人工参考一致。"},
+      "intent_completion": {"score": 3, "reason": "给出了规则，但没有判断用户实际属于哪种情况。"},
+      "actionability": {"score": 2, "reason": "用户仍需自行判断或另行联系客服。"},
+      "tone": {"score": 3, "reason": "表达中性礼貌。"}
+    },
+    "missing_points": ["询问本次退货原因并给出针对性结论"],
+    "risk_flags": [],
+    "summary": "规则有用，但还差一步场景确认。"
+  },
+  "case_10": {
+    "metrics": {
+      "reference_consistency": {"score": 4, "reason": "取消条件、操作和退款时效与人工参考一致。"},
+      "intent_completion": {"score": 4, "reason": "明确回答可以取消并说明后续退款。"},
+      "actionability": {"score": 3, "reason": "提供了清晰的自助操作路径和人工协助兜底。"},
+      "tone": {"score": 3, "reason": "礼貌清晰。"}
+    },
+    "missing_points": ["如系统具备能力，可直接索取订单号代为操作"],
+    "risk_flags": [],
+    "summary": "回答明确且可执行，是质量较高的自动回复。"
+  },
+  "case_11": {
+    "metrics": {
+      "reference_consistency": {"score": 2, "reason": "回复同时描述重新下单和收到退货后发新尺码，两套流程相互冲突。"},
+      "intent_completion": {"score": 2, "reason": "给了流程，但没有确认两件商品及目标尺码，且流程不明确。"},
+      "actionability": {"score": 1, "reason": "用户需自行分别申请，未索取必要商品和尺码信息。"},
+      "tone": {"score": 3, "reason": "语气礼貌。"}
+    },
+    "missing_points": ["确认两件商品", "确认各自目标尺码", "提供唯一且明确的换货流程"],
+    "risk_flags": [
+      {"code": "INTERNAL_CONTRADICTION", "severity": "high", "claim": "先退货重新下单；收到后发出新尺码", "reason": "两种处理流程不能同时成立，会直接误导用户操作。"},
+      {"code": "UNVERIFIED_POSTAGE_POLICY", "severity": "medium", "claim": "换货运费由买家承担", "reason": "当前人工参考没有提供这项运费规则。"}
+    ],
+    "summary": "换货流程内部矛盾，并缺少完成两件商品换码所需的信息确认。"
+  },
+  "case_12": {
+    "metrics": {
+      "reference_consistency": {"score": 4, "reason": "可能原因和跟进方向与人工参考没有冲突。"},
+      "intent_completion": {"score": 2, "reason": "没有查询这件快递的实际状态，只提供通用原因。"},
+      "actionability": {"score": 2, "reason": "有等待和联系路径，但没有先索取订单号主动跟进。"},
+      "tone": {"score": 3, "reason": "礼貌但较模板化。"}
+    },
+    "missing_points": ["索取订单号并查询物流", "异常时主动联系快递公司"],
+    "risk_flags": [],
+    "summary": "通用解释合理，但没有推进当前物流异常。"
+  },
+  "case_13": {
+    "metrics": {
+      "reference_consistency": {"score": 3, "reason": "没有与人工参考产生事实冲突；参考中的XX仅作为占位，不按真实成分参与比对。"},
+      "intent_completion": {"score": 2, "reason": "没有提供用户请求的成分信息，只让用户自行查看。"},
+      "actionability": {"score": 1, "reason": "没有主动查询成分或询问用户具体过敏成分。"},
+      "tone": {"score": 3, "reason": "表达礼貌，并注意到了敏感肌风险。"}
+    },
+    "missing_points": ["主动查询并提供成分信息", "询问用户具体过敏成分"],
+    "risk_flags": [],
+    "summary": "样本有效；占位值不参与事实比较，主要问题是没有完成成分查询。"
+  },
+  "case_14": {
+    "metrics": {
+      "reference_consistency": {"score": 3, "reason": "记录并转达建议与人工参考一致，但增加了当前产品能力描述。"},
+      "intent_completion": {"score": 3, "reason": "正确承接功能建议，并提供当前查看路径。"},
+      "actionability": {"score": 3, "reason": "表示转交产品团队，并提供针对具体商品的协助。"},
+      "tone": {"score": 4, "reason": "感谢表达自然，适合建议反馈场景。"}
+    },
+    "missing_points": ["询问用户特别想看视频的商品"],
+    "risk_flags": [
+      {"code": "UNVERIFIED_PRODUCT_CAPABILITY", "severity": "medium", "claim": "目前部分商品已支持视频展示", "reason": "当前参考不足以确认这项产品能力。"}
+    ],
+    "summary": "建议承接较好，但产品能力描述仍需真实数据支持。"
+  },
+  "case_15": {
+    "metrics": {
+      "reference_consistency": {"score": 3, "reason": "退款、运费和反馈方向基本一致，补偿表达不够具体且依赖真实政策。"},
+      "intent_completion": {"score": 3, "reason": "回应了连续质量问题并给出退款和补偿方向。"},
+      "actionability": {"score": 3, "reason": "处理方向明确，但仍需实际发起退款和确认补偿权限。"},
+      "tone": {"score": 4, "reason": "对连续两次问题进行了明确道歉和重视。"}
+    },
+    "missing_points": ["确认并执行具体补偿方案"],
+    "risk_flags": [
+      {"code": "UNVERIFIED_COMPENSATION", "severity": "medium", "claim": "可以申请额外的补偿优惠券", "reason": "是否可补偿及额度需要真实政策和权限支撑。"}
+    ],
+    "summary": "情绪和问题承接较好，补偿承诺需要政策依据。"
+  },
+  "case_16": {
+    "metrics": {
+      "reference_consistency": {"score": 4, "reason": "追问预算和需求的方向与人工参考一致。"},
+      "intent_completion": {"score": 3, "reason": "正确识别信息不足，但尚未获得具体机型，无法完成比较。"},
+      "actionability": {"score": 3, "reason": "主动邀请用户补充使用场景和预算。"},
+      "tone": {"score": 3, "reason": "礼貌自然。"}
+    },
+    "missing_points": ["确认具体是哪两款手机"],
+    "risk_flags": [],
+    "summary": "在信息不足时正确追问，后续可进一步主动完成对比。"
+  },
+  "case_17": {
+    "metrics": {
+      "reference_consistency": {"score": 4, "reason": "同时覆盖退货和快递两个问题，与人工参考一致。"},
+      "intent_completion": {"score": 3, "reason": "覆盖了两个诉求，并提出提供订单号后继续查询。"},
+      "actionability": {"score": 3, "reason": "虽然先给自助路径，但已明确表示可凭订单号协助查询。"},
+      "tone": {"score": 3, "reason": "礼貌且结构清晰。"}
+    },
+    "missing_points": ["明确区分需要的退货订单号和快递单号"],
+    "risk_flags": [],
+    "summary": "回复实际具备继续协助意图，质量高于人工备注中的描述。"
+  },
+  "case_18": {
+    "metrics": {
+      "reference_consistency": {"score": 4, "reason": "质量问题、质保期和退换方案与人工参考一致。"},
+      "intent_completion": {"score": 4, "reason": "直接给出了故障商品的处理结论和方案。"},
+      "actionability": {"score": 3, "reason": "处理步骤明确，但没有询问用户倾向退款还是换新。"},
+      "tone": {"score": 4, "reason": "对故障造成的不便进行了恰当道歉。"}
+    },
+    "missing_points": ["确认用户希望退款还是换新"],
+    "risk_flags": [],
+    "summary": "答案明确、可执行，只缺少方案偏好确认。"
+  },
+  "case_19": {
+    "metrics": {
+      "reference_consistency": {"score": 2, "reason": "没有执行人工参考中的补货查询，并新增了未被证明的自动提醒能力。"},
+      "intent_completion": {"score": 2, "reason": "没有询问具体商品或回答预计补货时间。"},
+      "actionability": {"score": 1, "reason": "主要让用户关注页面、联系客服或寻找替代品。"},
+      "tone": {"score": 3, "reason": "表达礼貌。"}
+    },
+    "missing_points": ["询问具体是哪款包", "查询补货计划", "在能力允许时设置到货提醒"],
+    "risk_flags": [
+      {"code": "UNVERIFIED_SYSTEM_CAPABILITY", "severity": "high", "claim": "加入购物车后补货时系统会自动提醒", "reason": "当前材料无法证明系统具有这项自动提醒能力。"}
+    ],
+    "summary": "没有查询补货时间，并可能虚构自动提醒能力。"
+  },
+  "case_20": {
+    "metrics": {
+      "reference_consistency": {"score": 4, "reason": "退货协助方向与人工参考没有冲突。"},
+      "intent_completion": {"score": 2, "reason": "用户已经表示看不懂，回复却再次重复完整流程。"},
+      "actionability": {"score": 2, "reason": "最后提供了截图求助路径，但没有先询问用户卡在哪一步。"},
+      "tone": {"score": 4, "reason": "能够对用户困扰作出道歉。"}
+    },
+    "missing_points": ["先询问用户卡在哪个环节", "针对卡点逐步协助"],
+    "risk_flags": [],
+    "summary": "语气合适，但重复流程没有针对用户当前障碍。"
+  }
+}
